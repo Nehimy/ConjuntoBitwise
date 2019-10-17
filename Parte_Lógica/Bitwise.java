@@ -1,4 +1,5 @@
 package Parte_Lógica;
+
 import java.util.Scanner;
 
 public class Bitwise{

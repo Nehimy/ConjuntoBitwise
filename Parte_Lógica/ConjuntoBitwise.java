@@ -1,13 +1,14 @@
 //chmod 777 run
-import Parte_Lógica.Bitwise;
+package Parte_Lógica;
+import java.util.Scanner;
 
 public class ConjuntoBitwise{
   Bitwise [] Conjunto;
   int dim;
 
   //Constructor
-  public ConjuntoBitwise(int cantidad){
-    
+  public ConjuntoBitwise(){
+    int cantidad = 100;
     Bitwise [] Conjunto;
     int dim;
     
@@ -26,10 +27,6 @@ public class ConjuntoBitwise{
     
   }
   
-  //Clase pincipal
-  public static void main(String[] args){  
+ 
   
-    
-  }
-  
-  }
+}
