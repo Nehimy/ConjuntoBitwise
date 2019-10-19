@@ -21,7 +21,7 @@ public class Ventana_SetBitwise{
   /*oooooooooooooooooooooooooooooooooo*/
   //Set = Conjunto en ingles
   private int Cantidad_Aux;
-  private ConjuntoBitwise SetBits = new ConjuntoBitwise(Cantidad_Aux);
+  //private ConjuntoBitwise SetBits = new ConjuntoBitwise(Cantidad_Aux);
   private ConjuntoBitwise A = new ConjuntoBitwise(Cantidad_Aux);
   private ConjuntoBitwise B = new ConjuntoBitwise(Cantidad_Aux);
   
@@ -283,10 +283,6 @@ public class Ventana_SetBitwise{
   public void Cantidad_Click(){
     
     Cantidad_Aux = Integer.parseInt(CantidadTxt.getText());
-    /*Bits.Encender(Cantidad_Aux);
-    String AuxPosition = String.valueOf(Bits.GetBit(Posicioncita));
-    MostrarTxt.setText(Bits.ObtenerTodo());
-    */
   }
   
   public void InsertarA_Click(){
@@ -306,8 +302,26 @@ public class Ventana_SetBitwise{
   public void Eliminar_Elemento_Click(){
   
     int Eliminar_Elemento_Aux = Integer.parseInt(Eliminar_ElementoTxt.getText());
-    SetBits.Eliminar(Eliminar_Elemento_Aux);
-    ResultadoTxt.setText(SetBits.ObtenerTodo());
+    /***********/
+    //Declaring a variable 
+    int number;
+    number = Integer.parseInt(JOptionPane.showInputDialog(Ventana," Delete en A insert 1;\n Delete en B insert 2; "));
+    //Switch expression
+    switch (number){
+      //Case statements
+      case 1:
+        A.Eliminar(Eliminar_Elemento_Aux);
+        ResultadoTxt.setText(A.ObtenerTodo());
+        break;
+      case 2:
+        B.Eliminar(Eliminar_Elemento_Aux);
+        ResultadoTxt.setText(B.ObtenerTodo());
+        break;
+        //Default case statement
+      default:
+        System.out.println("Not in 1 or 2 ");
+    }
+    /***********/
   }
   
   

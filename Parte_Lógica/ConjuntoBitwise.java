@@ -23,7 +23,7 @@ public class ConjuntoBitwise{
     for( int i = 0; i < NumberOfBitwise; i++){
       Conjunto [i] = new Bitwise();
     }
-    System.out.println(String.valueOf(dim));
+    //System.out.println(String.valueOf(dim));
     
   }
   
@@ -88,9 +88,9 @@ public class ConjuntoBitwise{
   
   public String ObtenerTodo(){
     String cadena = "x = ";
-    for (int i = 1;dim>=i;i++){
+    for (int i = 1; dim >= i; i++){
       if(Pertenece(i)){
-        cadena = cadena + i + ", ";
+        cadena = cadena + Conjunto[i] + ", ";
       }
       
     }
