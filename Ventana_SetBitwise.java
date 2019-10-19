@@ -1,5 +1,6 @@
 /*
 -https://darkbyteblog.wordpress.com/2011/01/06/java-las-clausulas-package-e-import/
+-http://www.edu4java.com/es/java/constructores-palabra-clave-this.html
 */
 import Parte_Lógica.ConjuntoBitwise;
 
@@ -19,8 +20,28 @@ public class Ventana_SetBitwise{
   /*-----------*/
   /*oooooooooooooooooooooooooooooooooo*/
   //Set = Conjunto en ingles
-  private ConjuntoBitwise SetBits = new ConjuntoBitwise();
-  //private Polinomio A = new Polinomio();
+  private int Cantidad_Aux;
+  private ConjuntoBitwise SetBits = new ConjuntoBitwise(Cantidad_Aux);
+  private ConjuntoBitwise A = new ConjuntoBitwise(Cantidad_Aux);
+  private ConjuntoBitwise B = new ConjuntoBitwise(Cantidad_Aux);
+  
+  /* Ventana */
+  private JFrame Ventana;
+  
+  /*Button*/
+  private JButton Cantidad;
+  private JButton InsertarA;
+  private JButton InsertarB;
+  private JButton Eliminar_Elemento;
+  private JButton Union;
+  private JButton Intersection;  
+  
+  /*Caja de texto*/
+  private JTextField  CantidadTxt;
+  private JTextField  InsertarA_Txt;
+  private JTextField  InsertarB_Txt;
+  private JTextField  Eliminar_ElementoTxt;
+  private JTextField  ResultadoTxt;
   
   /*oooooooooooooooooooooooooooooooooo*/
   //Clase pincipal
@@ -30,6 +51,264 @@ public class Ventana_SetBitwise{
   
   //Constructor De la Ventana
   public Ventana_SetBitwise(){
-    System.out.println("Hey");
+    //Variablede tipo JFrame    
+    Ventana = new JFrame("Ventanita Conjunto Bitwise");
+    Ventana.setSize(850,550);
+    Ventana.getContentPane().setBackground(Color.white);
+    Ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);/*Finaliza el programa*/
+    Ventana.setLayout(new GridBagLayout());
+    
+    //Declaramos la caja CantidadTxt
+    CantidadTxt = new JTextField("");
+    //Creamos nuetro propio color celeste	
+    Color lightBlue = new Color(51, 153, 255); 	
+    Border BordeCantidadTxt = BorderFactory.createLineBorder(lightBlue, 2);
+    CantidadTxt.setBorder(BordeCantidadTxt);
+    
+    //Declaramos la caja InsertarA_Txt
+    InsertarA_Txt = new JTextField("");
+    Border BorderInsertarA_Txt = BorderFactory.createLineBorder(lightBlue, 2);
+    InsertarA_Txt.setBorder(BorderInsertarA_Txt);
+    
+    //Declaramos la caja InsertarB_Txt
+    InsertarB_Txt = new JTextField("");
+    Border BorderInsertarB_Txt = BorderFactory.createLineBorder(lightBlue, 2);
+    InsertarB_Txt.setBorder(BorderInsertarB_Txt);
+    
+    //Declaramos la caja Eliminar_ElementoTxt
+    Eliminar_ElementoTxt = new JTextField("");
+    Border BorderEliminar_ElementoTxt = BorderFactory.createLineBorder(lightBlue, 2);
+    Eliminar_ElementoTxt.setBorder(BorderEliminar_ElementoTxt);
+    
+    //Declaramos la caja ResultadoTxt
+    ResultadoTxt = new JTextField("");
+    Border BorderResultadoTxt = BorderFactory.createLineBorder(lightBlue, 2);
+    ResultadoTxt.setBorder(BorderResultadoTxt);
+    
+    /*+++++++++++++++++++++++++++++++++++*/
+    /*+++Declaramos todos los Botones+++*/
+    /*+++++++++++++++++++++++++++++++++*/
+    
+    //Declaramos botón Cantidad
+    Cantidad = new JButton("Cantidad");
+    Cantidad.setForeground(Color.white);
+    Border Border_Cantidad = BorderFactory.createLineBorder(Color.darkGray, 2);
+    Cantidad.setBorder(Border_Cantidad);
+    Cantidad.setBackground(lightBlue);
+    
+    //Declaramos botón InsertarA
+    InsertarA = new JButton("Insertar en A");
+    InsertarA.setForeground(Color.white);
+    InsertarA.setBorder(BorderFactory.createLineBorder(Color.darkGray, 2));
+    InsertarA.setBackground(lightBlue);
+    
+    //Declaramos botón InsertarA
+    InsertarB = new JButton("Insertar en B");
+    InsertarB.setForeground(Color.white);
+    InsertarB.setBorder(BorderFactory.createLineBorder(Color.darkGray, 2));
+    InsertarB.setBackground(lightBlue);
+    
+    //Declaramos botón Eliminar_Elemento
+    Eliminar_Elemento = new JButton("Eliminar");
+    Eliminar_Elemento.setForeground(Color.white);
+    Eliminar_Elemento.setBorder(BorderFactory.createLineBorder(Color.darkGray, 2));
+    Eliminar_Elemento.setBackground(lightBlue);
+    
+    //Declaramos botón Union
+    Union = new JButton("Union");
+    Union.setForeground(Color.white);
+    Union.setBorder(BorderFactory.createLineBorder(Color.darkGray, 2));
+    Union.setBackground(lightBlue);
+    
+    //Declaramos botón Intersection
+    Intersection = new JButton("Intersección");
+    Intersection.setForeground(Color.white);
+    Intersection.setBorder(BorderFactory.createLineBorder(Color.darkGray, 2));
+    Intersection.setBackground(lightBlue);
+    
+    
+    /*-------Objeto de configuración del grid-------*/
+    GridBagConstraints gridConf = new GridBagConstraints();
+    gridConf.fill = GridBagConstraints.HORIZONTAL;
+    /*---------------------------------------------*/
+    
+    /*-------------------------------*/
+    /* Adherir elementos a la ventana*/
+    /*-------------------------------*/
+    
+    /*+++++++++++++*/
+    /*Caja de Texto*/
+    /*+++++++++++++*/
+    
+    /* Confi de pocicion CantidadTxt */
+    gridConf.gridx = 1;
+    gridConf.gridy = 0;
+    gridConf.ipady = 20;
+    gridConf.ipadx = 50;
+    gridConf.gridwidth = 1;
+    gridConf.insets = new Insets(0,0,6,6); //padding
+    
+    //Añadir CantidadTxt a la ventana
+    Ventana.add(CantidadTxt, gridConf);
+    
+    /* Confi de InsertarA_Txt */
+    gridConf.gridy = 1;
+    gridConf.gridwidth = 1;
+    //Añadir InsertarA_Txt en la ventana
+    Ventana.add(InsertarA_Txt,gridConf);
+    gridConf.gridwidth = 1;
+    
+    /* Confi de InsertarB_Txt */
+    gridConf.gridy = 2;
+    gridConf.gridwidth = 1;
+    //Añadir InsertarB_Txt en la ventana
+    Ventana.add(InsertarB_Txt,gridConf);
+    gridConf.gridwidth = 1;
+    
+    /* Confi de Eliminar_ElementoTxt */
+    gridConf.gridy = 3;
+    gridConf.gridwidth = 1;
+    //Añadir Eliminar_ElementoTxt en la ventana
+    Ventana.add(Eliminar_ElementoTxt,gridConf);
+    gridConf.gridwidth = 1;
+    
+    /* Confi de ResultadoTxt */
+    gridConf.gridy = 5;
+    gridConf.ipadx = 450;
+    gridConf.gridwidth = 2;
+    //Añadir ResultadoTxt en la ventana
+    Ventana.add(ResultadoTxt,gridConf);
+    gridConf.gridwidth = 1;
+    
+    /*+++++++*/
+    /*Botones*/
+    /*+++++++*/
+    
+    //Confi de Cantidad
+    gridConf.ipady = 20;
+    gridConf.ipadx = 20;
+    gridConf.gridwidth = 1;
+    //gridConf.insets = new Insets(10,10,10,10);
+    //Ayadir Cantidad en la ventana
+    gridConf.gridx = 0;
+    gridConf.gridy = 0;
+    Ventana.add(Cantidad, gridConf);
+    
+    //Confi de InsertarA
+    //Ayadir InsertarA en la ventana
+    gridConf.gridx = 0;
+    gridConf.gridy = 1;
+    Ventana.add(InsertarA, gridConf);
+    
+    //Confi de InsertarB
+    //Ayadir InsertarB en la ventana
+    gridConf.gridx = 0;
+    gridConf.gridy = 2;
+    Ventana.add(InsertarB, gridConf);
+    
+    //Confi de Eliminar_Elemento
+    //Ayadir Eliminar_Elemento en la ventana
+    gridConf.gridx = 0;
+    gridConf.gridy = 3;
+    Ventana.add(Eliminar_Elemento, gridConf);
+    
+    //Confi de Union
+    //Ayadir Union en la ventana
+    gridConf.gridx = 0;
+    gridConf.gridy = 4;
+    Ventana.add(Union, gridConf);
+    
+    //Confi de Intersection
+    //Ayadir Intersection en la ventana
+    gridConf.gridx = 1;
+    gridConf.gridy = 4;
+    gridConf.ipady = 20;
+    gridConf.ipadx = 20;
+    gridConf.gridwidth = 1;
+    //gridConf.insets = new Insets(10,10,10,10);
+    Ventana.add(Intersection, gridConf);
+    
+    /*****************************************/
+    /*******Onclick De los Botoncitos*********/
+    /*****************************************/
+    
+    //onclick Cantidad
+    Cantidad.addActionListener(new ActionListener(){
+      public void actionPerformed(ActionEvent e){
+        Cantidad_Click();
+      }
+    });
+    
+    //onclick InsertarA
+    InsertarA.addActionListener(new ActionListener(){
+      public void actionPerformed(ActionEvent e){
+        InsertarA_Click();
+      }
+    });
+    
+    //onclick InsertarB
+    InsertarB.addActionListener(new ActionListener(){
+      public void actionPerformed(ActionEvent e){
+        InsertarB_Click();
+      }
+    });
+    
+    //onclick Eliminar_Elemento
+    Eliminar_Elemento.addActionListener(new ActionListener(){
+      public void actionPerformed(ActionEvent e){
+        Eliminar_Elemento_Click();
+      }
+    });
+    /*
+    //onclick Union
+    Union.addActionListener(new ActionListener(){
+      public void actionPerformed(ActionEvent e){
+        Union_Click();
+      }
+    });
+    
+    //onclick Intersection
+    Intersection.addActionListener(new ActionListener(){
+      public void actionPerformed(ActionEvent e){
+        Intersection_Click();
+      }
+    });
+    */
+    /*------------------------*/
+    //ventanaM.pack();
+    Ventana.setVisible(true);//Configurando visualización de la ventana
+    /*------------------------*/  
   }
+  
+  public void Cantidad_Click(){
+    
+    Cantidad_Aux = Integer.parseInt(CantidadTxt.getText());
+    /*Bits.Encender(Cantidad_Aux);
+    String AuxPosition = String.valueOf(Bits.GetBit(Posicioncita));
+    MostrarTxt.setText(Bits.ObtenerTodo());
+    */
+  }
+  
+  public void InsertarA_Click(){
+  
+    int InsertarA_Aux = Integer.parseInt(InsertarA_Txt.getText());
+    A.Insertar(InsertarA_Aux);
+    ResultadoTxt.setText(A.ObtenerTodo());
+  }
+  
+  public void InsertarB_Click(){
+  
+    int InsertarB_Aux = Integer.parseInt(InsertarB_Txt.getText());
+    B.Insertar(InsertarB_Aux);
+    ResultadoTxt.setText(B.ObtenerTodo());
+  }
+  
+  public void Eliminar_Elemento_Click(){
+  
+    int Eliminar_Elemento_Aux = Integer.parseInt(Eliminar_ElementoTxt.getText());
+    SetBits.Eliminar(Eliminar_Elemento_Aux);
+    ResultadoTxt.setText(SetBits.ObtenerTodo());
+  }
+  
+  
 }
