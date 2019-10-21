@@ -46,6 +46,11 @@ public class Ventana_SetBitwise{
   private JTextField  A_Txt;
   private JTextField  B_Txt;
   
+  /* Labels */
+  private JLabel label_A;
+  private JLabel label_B;
+  private JLabel label_Resultado;
+  
   /*oooooooooooooooooooooooooooooooooo*/
   //Clase pincipal
   public static void main(String[] args){  
@@ -97,6 +102,16 @@ public class Ventana_SetBitwise{
     B_Txt = new JTextField("");
     Border BorderB_Txt = BorderFactory.createLineBorder(lightBlue, 2);
     B_Txt.setBorder(BorderB_Txt);
+    
+    //Declaramos todos los labels    
+    label_A= new JLabel("       A");
+    label_A.setFont(new Font("Arial", 0, 18));
+    
+    label_B= new JLabel("       B");
+    label_B.setFont(new Font("Arial", 0, 18));
+    
+    label_Resultado = new JLabel("Resultado");
+    label_Resultado.setFont(new Font("Arial", 0, 18));
     
     /*+++++++++++++++++++++++++++++++++++*/
     /*+++Declaramos todos los Botones+++*/
@@ -257,6 +272,22 @@ public class Ventana_SetBitwise{
     //gridConf.insets = new Insets(10,10,10,10);
     Ventana.add(Intersection, gridConf);
     
+    /****************/
+    /*   Labels     */ 
+    /****************/
+      
+    //Añadir labels a la ventana
+      gridConf.gridx = 0;
+      gridConf.gridy = 5;
+      gridConf.ipadx = 15;
+      Ventana.add(label_A, gridConf); 
+      
+      gridConf.gridy = 6;
+      Ventana.add(label_B, gridConf);
+      
+      gridConf.gridy = 7;
+      Ventana.add(label_Resultado, gridConf);
+      
     /*****************************************/
     /*******Onclick De los Botoncitos*********/
     /*****************************************/
