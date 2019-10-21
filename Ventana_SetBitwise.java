@@ -20,10 +20,11 @@ public class Ventana_SetBitwise{
   /*-----------*/
   /*oooooooooooooooooooooooooooooooooo*/
   //Set = Conjunto en ingles
-  private int Cantidad_Aux;
-  //private ConjuntoBitwise SetBits = new ConjuntoBitwise(Cantidad_Aux);
-  private ConjuntoBitwise A = new ConjuntoBitwise(Cantidad_Aux);
-  private ConjuntoBitwise B = new ConjuntoBitwise(Cantidad_Aux);
+  private int Cantidad_Aux1;
+  private int Cantidad_Aux2;
+  
+  private ConjuntoBitwise A;
+  private ConjuntoBitwise B;
   
   /* Ventana */
   private JFrame Ventana;
@@ -282,14 +283,43 @@ public class Ventana_SetBitwise{
   
   public void Cantidad_Click(){
     
-    Cantidad_Aux = Integer.parseInt(CantidadTxt.getText());
+    /**/
+     //A = new ConjuntoBitwise(aux);
+     //B = new ConjuntoBitwise(Cantidad_Aux2);
+   /**/
+    
+    //int Eliminar_Elemento_Aux = Integer.parseInt(Eliminar_ElementoTxt.getText());
+    /***********/
+    //Declaring a variable 
+    int number;
+    number = Integer.parseInt(JOptionPane.showInputDialog(Ventana," Quantity for set A insert 1;\n Quantity for set B insert 2; "));
+    //Switch expression
+    switch (number){
+      //Case statements
+      case 1:
+        Cantidad_Aux1 = Integer.parseInt(CantidadTxt.getText());
+        A = new ConjuntoBitwise(Cantidad_Aux1);
+        ResultadoTxt.setText(A.ObtenerTodo());
+        break;
+      case 2:
+        Cantidad_Aux2 = Integer.parseInt(CantidadTxt.getText());
+        B = new ConjuntoBitwise(Cantidad_Aux2);
+        ResultadoTxt.setText(B.ObtenerTodo());
+        break;
+        //Default case statement
+      default:
+        System.out.println("Not in 1 or 2 ");
+    }
+    /***********/
   }
   
   public void InsertarA_Click(){
   
+  
     int InsertarA_Aux = Integer.parseInt(InsertarA_Txt.getText());
     A.Insertar(InsertarA_Aux);
     ResultadoTxt.setText(A.ObtenerTodo());
+    System.out.println("Insert");
   }
   
   public void InsertarB_Click(){

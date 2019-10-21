@@ -7,6 +7,7 @@ public class Bitwise{
   
   public Bitwise(){
     x=0;
+    //x=32;
   }
   
   public void Encender(int position){
@@ -32,12 +33,12 @@ public class Bitwise{
   
   public String ObtenerTodo(){
     String cadena = "x = ";
-    for (int i = 32;i>=1;i--){
+    for (int i = 32;i >= 1;i--){
       cadena = cadena + GetBit(i) + " ";
+      System.out.println(i);
     }
     return cadena;
   }
  // System.out.println("Funciona");
-  
 
 }
