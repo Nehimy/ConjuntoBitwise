@@ -52,8 +52,8 @@ public class ConjuntoBitwise{
       int NumberOfbit = GetNumeroDe_Bit(elemento);
       Conjunto[NumberOfBitwise].Encender(NumberOfbit);
       
-      System.out.println(Integer.toString(NumberOfBitwise));
-      System.out.println(Integer.toString(NumberOfbit));
+      //System.out.println(Integer.toString(NumberOfBitwise));
+      //System.out.println(Integer.toString(NumberOfbit));
       
     }
   }
@@ -71,13 +71,12 @@ public class ConjuntoBitwise{
     int NumberOfBitwise = GetNumeroDe_Bitwise(elemento);
     int NumberOfbit = GetNumeroDe_Bit(elemento);
     
-    System.out.println(Integer.toString(NumberOfBitwise));
-    System.out.println("/**/");
-    System.out.println(Integer.toString(NumberOfbit));
+    //System.out.println(Integer.toString(NumberOfBitwise));
+
     
     int a = Conjunto[NumberOfBitwise].GetBit(NumberOfbit);
     boolean aux = (a == 1);
-    System.out.println(String.valueOf(aux));
+    //System.out.println(String.valueOf(aux));
     return aux;                                   
   }
   

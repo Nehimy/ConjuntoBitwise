@@ -43,6 +43,8 @@ public class Ventana_SetBitwise{
   private JTextField  InsertarB_Txt;
   private JTextField  Eliminar_ElementoTxt;
   private JTextField  ResultadoTxt;
+  private JTextField  A_Txt;
+  private JTextField  B_Txt;
   
   /*oooooooooooooooooooooooooooooooooo*/
   //Clase pincipal
@@ -85,6 +87,16 @@ public class Ventana_SetBitwise{
     ResultadoTxt = new JTextField("");
     Border BorderResultadoTxt = BorderFactory.createLineBorder(lightBlue, 2);
     ResultadoTxt.setBorder(BorderResultadoTxt);
+    
+    //Declaramos la caja A_Txt
+    A_Txt = new JTextField("");
+    Border BorderA_Txt = BorderFactory.createLineBorder(lightBlue, 2);
+    A_Txt.setBorder(BorderA_Txt);
+    
+    //Declaramos la caja B_Txt
+    B_Txt = new JTextField("");
+    Border BorderB_Txt = BorderFactory.createLineBorder(lightBlue, 2);
+    B_Txt.setBorder(BorderB_Txt);
     
     /*+++++++++++++++++++++++++++++++++++*/
     /*+++Declaramos todos los Botones+++*/
@@ -173,8 +185,24 @@ public class Ventana_SetBitwise{
     Ventana.add(Eliminar_ElementoTxt,gridConf);
     gridConf.gridwidth = 1;
     
-    /* Confi de ResultadoTxt */
+    /* Confi de A_Txt */
     gridConf.gridy = 5;
+    gridConf.ipadx = 450;
+    gridConf.gridwidth = 2;
+    //Añadir A_Txt en la ventana
+    Ventana.add(A_Txt,gridConf);
+    gridConf.gridwidth = 1;
+    
+    /* Confi de B_Txt */
+    gridConf.gridy = 6;
+    gridConf.ipadx = 450;
+    gridConf.gridwidth = 2;
+    //Añadir B_Txt en la ventana
+    Ventana.add(B_Txt,gridConf);
+    gridConf.gridwidth = 1;
+    
+    /* Confi de ResultadoTxt */
+    gridConf.gridy = 7;
     gridConf.ipadx = 450;
     gridConf.gridwidth = 2;
     //Añadir ResultadoTxt en la ventana
@@ -299,12 +327,12 @@ public class Ventana_SetBitwise{
       case 1:
         Cantidad_Aux1 = Integer.parseInt(CantidadTxt.getText());
         A = new ConjuntoBitwise(Cantidad_Aux1);
-        ResultadoTxt.setText(A.ObtenerTodo());
+        A_Txt.setText(A.ObtenerTodo());
         break;
       case 2:
         Cantidad_Aux2 = Integer.parseInt(CantidadTxt.getText());
         B = new ConjuntoBitwise(Cantidad_Aux2);
-        ResultadoTxt.setText(B.ObtenerTodo());
+        B_Txt.setText(B.ObtenerTodo());
         break;
         //Default case statement
       default:
@@ -318,7 +346,7 @@ public class Ventana_SetBitwise{
   
     int InsertarA_Aux = Integer.parseInt(InsertarA_Txt.getText());
     A.Insertar(InsertarA_Aux);
-    ResultadoTxt.setText(A.ObtenerTodo());
+    A_Txt.setText(A.ObtenerTodo());
     System.out.println("Insert");
   }
   
@@ -326,7 +354,7 @@ public class Ventana_SetBitwise{
   
     int InsertarB_Aux = Integer.parseInt(InsertarB_Txt.getText());
     B.Insertar(InsertarB_Aux);
-    ResultadoTxt.setText(B.ObtenerTodo());
+    B_Txt.setText(B.ObtenerTodo());
   }
   
   public void Eliminar_Elemento_Click(){
@@ -341,11 +369,11 @@ public class Ventana_SetBitwise{
       //Case statements
       case 1:
         A.Eliminar(Eliminar_Elemento_Aux);
-        ResultadoTxt.setText(A.ObtenerTodo());
+        A_Txt.setText(A.ObtenerTodo());
         break;
       case 2:
         B.Eliminar(Eliminar_Elemento_Aux);
-        ResultadoTxt.setText(B.ObtenerTodo());
+        B_Txt.setText(B.ObtenerTodo());
         break;
         //Default case statement
       default:
