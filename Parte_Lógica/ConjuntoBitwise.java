@@ -15,15 +15,12 @@ public class ConjuntoBitwise{
     if((cantidad % 32) != 0){
       NumberOfBitwise++;
     }
-    
     Conjunto = new Bitwise [NumberOfBitwise];
     dim = cantidad;
     for( int i = 0; i < NumberOfBitwise; i++){
       System.out.println(String.valueOf(i));
-      Conjunto [i] = new Bitwise();
-       
+      Conjunto [i] = new Bitwise(); 
     }
-   
     
   }
   
@@ -45,7 +42,7 @@ public class ConjuntoBitwise{
   
   // Insertar en el conjunto de bitwise
   public void Insertar(int elemento){
-    System.out.println("y");
+    //System.out.println("y");
     if(elemento <= dim){
       System.out.println("insertar");
       int NumberOfBitwise = GetNumeroDe_Bitwise(elemento);
@@ -71,9 +68,6 @@ public class ConjuntoBitwise{
     int NumberOfBitwise = GetNumeroDe_Bitwise(elemento);
     int NumberOfbit = GetNumeroDe_Bit(elemento);
     
-    //System.out.println(Integer.toString(NumberOfBitwise));
-
-    
     int a = Conjunto[NumberOfBitwise].GetBit(NumberOfbit);
     boolean aux = (a == 1);
     //System.out.println(String.valueOf(aux));
@@ -82,7 +76,12 @@ public class ConjuntoBitwise{
   
   public void Union(ConjuntoBitwise A, ConjuntoBitwise B){
     for(int i = 1; i <= A.dim; i++){
-      if(Pertenece(i)){
+      if(A.Pertenece(i)){
+        Insertar(i);
+      }
+    }
+    for(int i = 1; i <= B.dim; i++){
+      if(B.Pertenece(i)){
         Insertar(i);
       }
     }
