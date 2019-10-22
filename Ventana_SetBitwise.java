@@ -23,6 +23,7 @@ public class Ventana_SetBitwise{
   private int Cantidad_Aux1;
   private int Cantidad_Aux2;
   private int Cantidad_Aux3;
+  private int Cantidad_Aux4;
   
   private ConjuntoBitwise A;
   private ConjuntoBitwise B;
@@ -329,14 +330,14 @@ public class Ventana_SetBitwise{
         Union_Click();
       }
     });
-    /*
+    
     //onclick Intersection
     Intersection.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent e){
         Intersection_Click();
       }
     });
-    */
+    
     /*------------------------*/
     //ventanaM.pack();
     Ventana.setVisible(true);//Configurando visualización de la ventana
@@ -344,11 +345,10 @@ public class Ventana_SetBitwise{
   }
   
   public void Cantidad_Click(){
-    
     /***********/
     //Declaring a variable 
     int number;
-    number = Integer.parseInt(JOptionPane.showInputDialog(Ventana," Quantity for set A insert 1;\n Quantity for set B insert 2;\n Quantity for set C insert 3; "));
+    number = Integer.parseInt(JOptionPane.showInputDialog(Ventana," Quantity for set A insert 1;\n Quantity for set B insert 2;\n Quantity for set C insert 3;\n Quantity for set D insert 4; "));
     //Switch expression
     switch (number){
       //Case statements
@@ -367,6 +367,11 @@ public class Ventana_SetBitwise{
         C = new ConjuntoBitwise(Cantidad_Aux3);
         ResultadoTxt.setText(C.ObtenerTodo());
         break;
+      case 4:
+        Cantidad_Aux4 = Integer.parseInt(CantidadTxt.getText());
+        D = new ConjuntoBitwise(Cantidad_Aux4);
+        ResultadoTxt.setText(D.ObtenerTodo());
+        break;
         //Default case statement
       default:
         System.out.println("Not in 1 or 2 ");
@@ -374,10 +379,14 @@ public class Ventana_SetBitwise{
     /***********/
   }
   
-  public void Union_Click(){
-    
+  public void Union_Click(){ 
     C.Union(A,B);
     ResultadoTxt.setText(C.ObtenerTodo());
+  }
+  
+  public void Intersection_Click(){ 
+    D.Intersection(A,B);
+    ResultadoTxt.setText(D.ObtenerTodo());
   }
   
   public void InsertarA_Click(){
@@ -401,7 +410,7 @@ public class Ventana_SetBitwise{
     /***********/
     //Declaring a variable 
     int number;
-    number = Integer.parseInt(JOptionPane.showInputDialog(Ventana," Delete en A insert 1;\n Delete en B insert 2;\n Delete en C "));
+    number = Integer.parseInt(JOptionPane.showInputDialog(Ventana," Delete en A insert 1;\n Delete en B insert 2;\n Delete en C;\n Delete en D "));
     //Switch expression
     switch (number){
       //Case statements
@@ -416,6 +425,10 @@ public class Ventana_SetBitwise{
       case 3:
         C.Eliminar(Eliminar_Elemento_Aux);
         ResultadoTxt.setText(C.ObtenerTodo());
+        break;
+      case 4:
+        D.Eliminar(Eliminar_Elemento_Aux);
+        ResultadoTxt.setText(D.ObtenerTodo());
         break;
         //Default case statement
       default:
