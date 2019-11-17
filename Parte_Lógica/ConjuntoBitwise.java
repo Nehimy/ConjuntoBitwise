@@ -44,7 +44,6 @@ public class ConjuntoBitwise{
   public void Insertar(int elemento){
     //System.out.println("y");
     if(elemento <= dim){
-      System.out.println("insertar");
       int NumberOfBitwise = GetNumeroDe_Bitwise(elemento);
       int NumberOfbit = GetNumeroDe_Bit(elemento);
       Conjunto[NumberOfBitwise].Encender(NumberOfbit);
@@ -89,7 +88,7 @@ public class ConjuntoBitwise{
   
   public void Intersection(ConjuntoBitwise A, ConjuntoBitwise B){
     for(int i = 1; i <= A.dim; i++){
-      if(B.Pertenece(i)){
+      if(B.Pertenece(i) && A.Pertenece(i)){
         Insertar(i);
       }
     }
